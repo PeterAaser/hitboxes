@@ -46,7 +46,12 @@
     	var stencilPixel = stencilCtx.getImageData(x, y, 1, 1).data;
 
     	console.log(stencilPixel);
-
+    	ctx.hidden = true;
+		stencilCtx.hidden = false;
+		await sleep(50);
+		ctx.hidden = false;
+		stencilCtx.hidden = true;
+		
 	}, false);
 
 </script> 
