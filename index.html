@@ -4,6 +4,7 @@
 		<h1>Hello World</h1>
 		<p>I'm hosted with GitHub Pages.</p>
 		<canvas id="myCanvas" width="1920" height="1080"></canvas>
+
 	</body>
 </html>
 
@@ -11,10 +12,36 @@
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
 	
-	const img = new Image();
-	img.src = './cat.jpg';
-	img.onload = () => {          
-		ctx.drawImage(img, 0, 0);        
-	};
+	function set
+
+	function runHitbox(testname) {
+	  	const img = new Image();
+		img.src = './' + testname + '.jpg';
+
+		const stencil = new Image();
+		stencil.src = './' + testname + '_stencil.jpg';
+
+		img.onload = () => {          
+			ctx.drawImage(img, 0, 0);
+		};
+
+		return stencil;
+	}
+
+	var stencil = runHitbox('cat')
+
+	// Add event listener for `click` events.
+	ctx.addEventListener('click', function(event) {
+    	var x = event.pageX - elemLeft,
+        	y = event.pageY - elemTop;
+
+    	console.log(x)
+    	console.log(y)
+
+    	var stencil_value = stencil.getImageData(x, y, 1, 1).data;
+
+    	console.log(stencil_value);
+
+	}, false);
 
 </script> 
